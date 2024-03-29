@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: solar-system # Replace with your application name
+  name: solar-system-service # Replace with your desired service name
+spec:
+  type: NodePort
+  selector:
+    app: solar-system # Must match selector in deployment/pod
+  ports:
+  - protocol: TCP  # Change to UDP if your application uses UDP
+    port: 80  # Cluster port (exposed port within the cluster)
+    targetPort: 80  # Pod port (port where your application listens)
